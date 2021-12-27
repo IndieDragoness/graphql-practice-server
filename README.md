@@ -11,25 +11,45 @@
 This project is for practicing GraphQL in isolation (without the many complicating external factors), and uses the `GraphiQL` interface. It is divided into multiple directories, each with their own `server.js`/`schema.js` implementation, `README.md`, and `Dockerfile`.
 
 ## Packages
+These are the repo-wide packages necessary. See specific project folders for additional packages specific to that project.
 * `npm`: Command for installing packages
 * `express`: Handling incoming HTTP requests and sending responses to users  
 * `express-graphql`: Compatibility layer between `express` and `graphql`
 * `graphql`: Graphql library for crawling Graphs
 * `lodash`: Utility functions that are useful
 
-## Init
-1. `cd` into the `graphql_practice/users` directory
-2. `npm init`
-3. `npm install --save express express-graphql graphql lodash`
-4. Put together the bare essentials of an express server to start a new express application and listen to an outside port (see below)
-
 ## Directory Structure
+To regenerate this directory structure, use `tree -IC "node_modules"` (`-I "node_modules"` ignores the `node_modules` directory for brevity, `-C` colors the output).
 ```
-Todo
+.
+├── README.md
+├── graphql_practice_json_server
+│   ├── Dockerfile
+│   ├── README.md
+│   ├── images
+│   │   └── graphql_practice_server_schema_database.drawio.png
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── schema
+│   │   └── schema.js
+│   └── server.js
+├── graphql_practice_no_database
+│   ├── Dockerfile
+│   ├── README.md
+│   ├── images
+│   │   └── graphql_practice_server_schema_database.drawio.png
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── schema
+│   │   └── schema.js
+│   └── server.js
+└── images
 ```
 
 ## How to Add to this Project
 To add a new GraphQL practice implementation, create a new directory and name it something relevant i.e. `graphql_practice_<name>`.
+
+Follow the directions in the [init](#init) section.
 
 Use the `Dockerfile` to implement that particular implementations dockerization.
 
@@ -40,6 +60,12 @@ If you come across a common error for your implementation, add it similar to [Co
 Try to be as descriptive as possible so others can learn the implementation!
 
 If you need to add images to your `README.md` (who doesn't like having a diagram?), create an `images` folder in your implementation's directory and then save the image there. Use HTML to add the image and properly center it. If you are curious how this is done, check out the other `README.md`'s in this project.
+
+### Init
+1. `cd` into the `graphql-practice-server/<new_practice_server>` directory
+2. `npm init`
+3. `npm install --save express express-graphql graphql lodash`
+4. Put together the bare essentials of an express server to start a new express application and listen to an outside port. See the `graphql_practice_no_database` directory for the bare bones example of this.
 
 # Common Errors
 ## Syntax Error: GraphQL Request
