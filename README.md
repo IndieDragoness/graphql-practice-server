@@ -4,6 +4,9 @@
     * [Init](#init)
     * [Directory Structure](#directory-structure)
     * [How to Use](#how-to-use)
+        * [Local](#local)
+        * [Building the Docker Container](#building-the-docker-continer)
+        * [Running the Docker Container](#running-the-docker-container)
 * [Common Errors](#common-errors)
 * [Glossary of Terms](#glossary-of-terms)
 
@@ -63,17 +66,17 @@ While the `express` server is running, go to `localhost:4000/graphql`.
 
 If you make changes to `schema.js`, restart the `express` server.
 
-### Running the Docker Container
-Start the container:
-* `docker run -p4000:4000 graphiql_local_test`
-
-Then go to `localhost:4000/graphql` in your browser.
-
 ## Building the Docker Container
 First, `cd` into the `graphql-practice-server` directory.
 
 Run the following command:
 * `docker build -t graphiql_local_test .`
+
+### Running the Docker Container
+Start the container:
+* `docker run -p4000:4000 graphiql_local_test`
+
+Then go to `localhost:4000/graphql` in your browser.
 
 # Common Errors
 ## Syntax Error: GraphQL Request
