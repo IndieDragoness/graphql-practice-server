@@ -1,5 +1,6 @@
 # Table of Contents
 * [Summary](#summary)
+    * [Important Files](#important-files)
     * [Packages](#packages)
     * [Directory Structure](#directory-structure)
     * [How to Use](#how-to-use)
@@ -8,15 +9,13 @@
         * [Running the Docker Container](#running-the-docker-container)
 
 # Summary
-This directory is for practicing GraphQL in isolation (no database, use the `users` variable in `/schema/schema.js`). Uses the `GraphiQL` interface for the front-end.
+This directory is for practicing GraphQL with a JSON Server (`json-server` package).
 
-<p align="center">
-<img src="images/graphql_practice_server_schema_database.drawio.png" width="400" margin-left="auto" margin-right="auto">
-</p>
-
-To view in a browser, go to: `localhost:4000/graphql`
-
-50% of the effort in GraphQL is writing your `schema.js`. The other 50% is writing `queries` for your `schema.js`.
+## Important Files
+1. `json.db`: This is where your data should be stored/modified.
+2. `schema.js`: This is where you establish your GraphQL `schema`.
+3. `server.js`: This is where you control the `express` server for GraphQL.
+4. `package.json`: This is where you add additional helper commands, in this project's case the `json:server` component to start the `json-server`.
 
 ## Packages
 * `json-server`

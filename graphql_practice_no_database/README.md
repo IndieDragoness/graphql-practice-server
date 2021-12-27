@@ -14,9 +14,9 @@ This directory is for practicing GraphQL in isolation (no database, use the `use
 <img src="images/graphql_practice_server_schema_database.drawio.png" width="400" margin-left="auto" margin-right="auto">
 </p>
 
-To view in a browser, go to: `localhost:4000/graphql`
-
-50% of the effort in GraphQL is writing your `schema.js`. The other 50% is writing `queries` for your `schema.js`.
+## Important Files
+1. `schema.js`: This is where you establish your GraphQL `schema`. For this project directory, it's also where your data is stored (see the `users` variable in the script).
+2. `server.js`: This is where you control the `express` server for GraphQL.
 
 ## Packages
 No additonal packages necessary (beyond the ones specified in the top-level `README.md`).
