@@ -11,15 +11,7 @@
 * [Glossary of Terms](#glossary-of-terms)
 
 # Summary
-This project is for practicing GraphQL in isolation, and uses the `GraphiQL` interface.
-
-<p align="center">
-<img src="images/graphiql_express_schema_database.png" width="400" margin-left="auto" margin-right="auto">
-</p>
-
-To view in a browser, go to: `localhost:4000/graphql`
-
-50% of the effort in GraphQL is writing your `schema.js`. The other 50% is writing `queries` for your `schema.js`.
+This project is for practicing GraphQL in isolation (without the many complicating external factors), and uses the `GraphiQL` interface. It is divided into multiple directories, each with their own `server.js`/`schema.js` implementation, `README.md`, and `Dockerfile`.
 
 ## Packages
 * `npm`: Command for installing packages
@@ -36,47 +28,21 @@ To view in a browser, go to: `localhost:4000/graphql`
 
 ## Directory Structure
 ```
-.
-├── README.md
-└── users
-    ├── package-lock.json
-    ├── package.json
-    ├── schema
-    │   └── schema.js
-    └── server.js
+Todo
 ```
 
-## How to Use
-To practice GraphQL in isolation, this project makes use of a minimal `express` server (`server.js`) and replaces a call to a database with hardcoded data held within the script itself (the `user` variable inside `schema.js`).
+## How to Add to this Project
+To add a new GraphQL practice implementation, create a new directory and name it something relevant i.e. `graphql_practice_<name>`.
 
-The workflow is as follows:
-1. Construct your `graphql` `schema.js`. Includes the following:
-  * Configure 'mock database' object `users`
-  * Configure your data 'types', mapping them to GraphQL types i.e.: `UserType = new GraphQLObjectType`
-  * Configure your `root query` i.e.: `RootQuery = new GraphQLObjectType`
-2. Start/Docker Build & Run the `express` server (see below)
+Use the `Dockerfile` to implement that particular implementations dockerization.
 
-### Local
-First, `cd` into the `graphql-practice-server/users` directory.
+Create a custom `README.md` for the new project that follows the structure of other `README.md`'s you see in this project.
 
-Start `express` server:
-* `node server.js`
+If you come across a common error for your implementation, add it similar to [Common Errors](#common-errors) below in the `README.md` you created.
 
-While the `express` server is running, go to `localhost:4000/graphql`.
+Try to be as descriptive as possible so others can learn the implementation!
 
-If you make changes to `schema.js`, restart the `express` server.
-
-## Building the Docker Container
-First, `cd` into the `graphql-practice-server` directory.
-
-Run the following command:
-* `docker build -t graphiql_local_test .`
-
-### Running the Docker Container
-Start the container:
-* `docker run -p4000:4000 graphiql_local_test`
-
-Then go to `localhost:4000/graphql` in your browser.
+If you need to add images to your `README.md` (who doesn't like having a diagram?), create an `images` folder in your implementation's directory and then save the image there. Use HTML to add the image and properly center it. If you are curious how this is done, check out the other `README.md`'s in this project.
 
 # Common Errors
 ## Syntax Error: GraphQL Request
