@@ -88,5 +88,5 @@ A correct input looks like:
   * `doc panel`: In `graphiql`, on the right-hand side of the browser window, is a doc panel that interprets the `schema.js` and gradually grows as your `schema.js` grows. Very useful.
 * `query`: A request made of the RESTful `graph`
 * `root query`: Entrypoint into the data/application
-* `resolve() function`: The function that actually makes the database calls
+* `resolve() function`: The function that actually makes the database calls; can be utilized `sync` OR `async` (by returning a `promise`). For the `sync` example see `graphql_practice_no_database`. For the `async` example see `graphql_practice_json_server`.
 * `lodash`: Helper function for working with collections of data

@@ -3,7 +3,7 @@ FROM node
 COPY . /graphql_practice_json_server
 
 WORKDIR /graphql_practice_json_server
-RUN npm install --save express express-graphql graphql lodash
+RUN npm install --save express express-graphql graphql lodash json-server
 
 EXPOSE 4000
 
