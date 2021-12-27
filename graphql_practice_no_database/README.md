@@ -57,7 +57,7 @@ The workflow is as follows:
 2. Start/Docker Build & Run the `express` server (see below)
 
 ### Local
-First, `cd` into the `graphql-practice-server/users` directory.
+First, `cd` into the directory this `README.md` is located in.
 
 Start `express` server:
 * `node server.js`
@@ -67,13 +67,13 @@ While the `express` server is running, go to `localhost:4000/graphql`.
 If you make changes to `schema.js`, restart the `express` server.
 
 ### Building the Docker Container
-First, `cd` into the `graphql-practice-server` directory.
+First, `cd` into the directory this `README.md` is located in.
 
 Run the following command:
-* `docker build -t graphiql_local_test .`
+* `docker build -t graphql_practice_no_database .`
 
 ### Running the Docker Container
 Start the container:
-* `docker run -p4000:4000 graphiql_local_test`
+* `docker run -p4000:4000 graphql_practice_no_database`
 
 Then go to `localhost:4000/graphql` in your browser.

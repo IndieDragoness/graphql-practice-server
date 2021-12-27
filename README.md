@@ -3,10 +3,7 @@
     * [Packages](#packages)
     * [Init](#init)
     * [Directory Structure](#directory-structure)
-    * [How to Use](#how-to-use)
-        * [Local](#local)
-        * [Building the Docker Container](#building-the-docker-continer)
-        * [Running the Docker Container](#running-the-docker-container)
+    * [How to Add to this Project](#how-to-use)
 * [Common Errors](#common-errors)
 * [Glossary of Terms](#glossary-of-terms)
 

@@ -8,7 +8,6 @@
         * [Building the Docker Container](#building-the-docker-continer)
         * [Running the Docker Container](#running-the-docker-container)
 * [Common Errors](#common-errors)
-* [Glossary of Terms](#glossary-of-terms)
 
 # Summary
 This directory is for practicing GraphQL in isolation (no database, use the `users` variable in `/schema/schema.js`). Uses the `GraphiQL` interface for the front-end.
@@ -57,7 +56,7 @@ The workflow is as follows:
 2. Start/Docker Build & Run the `express` server (see below)
 
 ### Local
-First, `cd` into the `graphql-practice-server/users` directory.
+First, `cd` into the directory this `README.md` is located in.
 
 Start `express` server:
 * `node server.js`
@@ -67,13 +66,15 @@ While the `express` server is running, go to `localhost:4000/graphql`.
 If you make changes to `schema.js`, restart the `express` server.
 
 ### Building the Docker Container
-First, `cd` into the `graphql-practice-server` directory.
+First, `cd` into the directory this `README.md` is located in.
 
 Run the following command:
-* `docker build -t graphiql_local_test .`
+* `docker build -t graphql_practice_json_server .`
 
 ### Running the Docker Container
 Start the container:
-* `docker run -p4000:4000 graphiql_local_test`
+* `docker run -p4000:4000 graphql_practice_json_server`
 
 Then go to `localhost:4000/graphql` in your browser.
+
+# Common Errors
