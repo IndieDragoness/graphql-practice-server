@@ -10,7 +10,7 @@
 # Summary
 This project is for practicing GraphQL in isolation, and uses the `GraphiQL` interface.
 
-<img src="images/graphiql_express_schema_database.png" width="400" margin-left="auto" margin-right="auto" display="block">
+<img src="images/graphiql_express_schema_database.png" width="400" margin-left="auto" margin-right="auto">
 
 To view in a browser, go to: `localhost:4000/graphql`
 
