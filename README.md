@@ -8,7 +8,9 @@
 * [Glossary of Terms](#glossary-of-terms)
 
 # Summary
-This project is for practicing GraphQL in isolation.
+This project is for practicing GraphQL in isolation, and uses the `GraphiQL` interface.
+
+![Alt text](images/graphiql_express_schema_database.png?raw=true "Title")
 
 To view in a browser, go to: `localhost:4000/graphql`
 
