@@ -42,7 +42,8 @@ Modification to: **package.json**
 <p align="center">
 <img src="images/graphql_practice_server_schema_json.drawio.png" width="400" margin-left="auto" margin-right="auto">
 </p>
-Unlike `graphql_practice_no_database`, this project uses `async` (`promises`) to retrieve information from `json-server`.
+Unlike `graphql_practice_no_database`, this project uses `async` (`promises`) to retrieve information from `json-server`:
+
 1. GraphiQL front-end makes HTTP request to GraphQL `express` server.
 2. GraphQL makes a HTTP request of`json-server`, for example for `user=23`.
 3. The `json-server` responds with `user=23`.
