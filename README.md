@@ -42,6 +42,35 @@ To view in a browser, go to: `localhost:4000/graphql`
 ## How to Use
 To practice GraphQL in isolation, this project makes use of a minimal `express` server (`server.js`) and replaces a call to a database with hardcoded data held within the script itself (the `user` variable inside `schema.js`).
 
+The workflow is as follows:
+1. Construct your `graphql` `schema.js`. Includes the following:
+  * Configure 'mock database' object `users`
+  * Configure your data 'types', mapping them to GraphQL types i.e.: `UserType = new GraphQLObjectType`
+  * Configure your `root query` i.e.: `RootQuery = new GraphQLObjectType`
+2. Start/Docker Build & Run the `express` server (see below)
+
+### Local
+First, `cd` into the `graphql-practice-server/users` directory.
+
+Start `express` server:
+* `node server.js`
+
+While the `express` server is running, go to `localhost:4000/graphql`.
+
+If you make changes to `schema.js`, restart the `express` server.
+
+### Running the Docker Container
+Start the container:
+* `docker run -p4000:4000 graphiql_local_test`
+
+Then go to `localhost:4000/graphql` in your browser.
+
+## Building the Docker Container
+First, `cd` into the `graphql-practice-server` directory.
+
+Run the following command:
+* `docker build -t graphiql_local_test .`
+
 # Common Errors
 ## Syntax Error: GraphQL Request
 Commonly occurs if you make a mistake in the `root query` input. For example, if your `query` is `{user(){firstName}}` (wrong) instead of `{user(id: "23"){firstName}}` (right).

@@ -20,5 +20,5 @@ app.use('/graphql', graphqlHTTP({
 
 // Starts a UNIX socket and listens for connections
 app.listen(4000, () => {
-    console.log('Listening');
+    console.log('Running! Go to localhost:4000/graphql to view.');
 });
