@@ -14,7 +14,7 @@
 This directory is for practicing GraphQL in isolation (no database, use the `users` variable in `/schema/schema.js`). Uses the `GraphiQL` interface for the front-end.
 
 <p align="center">
-<img src="graphql_practice_server_schema_database.png" width="400" margin-left="auto" margin-right="auto">
+<img src="images/graphql_practice_server_schema_database.png" width="400" margin-left="auto" margin-right="auto">
 </p>
 
 To view in a browser, go to: `localhost:4000/graphql`
