@@ -7,6 +7,9 @@
         * [Local](#local)
         * [Building the Docker Container](#building-the-docker-continer)
         * [Running the Docker Container](#running-the-docker-container)
+* [More about JSON Server](#more-about-json-server)
+* [The Resolve Function](#the-resolve-function)
+* [Database View versus GraphQL View](#database-view-versus-graphql-view)
 
 # Summary
 This directory is for practicing GraphQL with a JSON Server (`json-server` package).
@@ -19,12 +22,14 @@ This directory is for practicing GraphQL with a JSON Server (`json-server` packa
 
 ## Packages
 * `json-server`
+* `axios`
 
 ## How to Use
 This implementation uses the `json-server` package to provide the `db.json` file, which will serve as a mock API The `json-server` package is about building very small, very fast fake API's to serve data.
 
-If you haven't installed `json-server` yet, do so with this command (also make sure you install the packages listed in the top-level `README.md` if you haven't):
+If you haven't installed `json-server` or `axios` yet, `cd` to the `graphql_practice_json_server` directory and do so with these commands (also make sure you install the packages listed in the top-level `README.md` if you haven't):
 * `npm install --save json-server`
+* `npm install --save axios`
 
 Note that the JSON Server is a separate decoupled entity from the GraphQL Server. To that effect, an additional line has been added to the `package.json` file to call the `json-server`:
 
@@ -37,6 +42,8 @@ Modification to: **package.json**
 },
 ...
 ```
+
+Also note that in `schema.js` the `resolve()` function is what is used to fetch data, and since we're using `axios` in that function it's important to double check that the return value is in a form that GraphQL expects. In this case, `axios` returns a `{data: {firstName: 'bill'}}` which is NOT the correct shape. See the `schema.js` to see how this is handled.
 
 <p align="center">
 <img src="images/graphql_practice_server_schema_json.drawio.png" width="400" margin-left="auto" margin-right="auto">
@@ -86,3 +93,22 @@ Start the container:
 * `docker run -p4000:4000 graphql_practice_json_server`
 
 Then go to `localhost:4000/graphql` in your browser.
+
+# More About JSON Server
+An excellent tool for setting up Mock data/backend for when you need to do middle/frontend development.
+* [GitHub: json-server](https://github.com/typicode/json-server)
+* [Create a REST API With JSON Server](https://medium.com/codingthesmartway-com-blog/create-a-rest-api-with-json-server-36da8680136d)
+
+# The Resolve Function
+The `resolve()` function ties different 'nodes' in the graph of GraphQL together. In other words, a `UserType` (Node) can hold a reference to a `CompanyType` (Node) and the `resolve()` function acts as a path (Edge). Each of the edges of the graph are `resolve()` functions.
+
+<p align="center">
+<img src="images/graphql_resolve_functions.drawio.png" width="400" margin-left="auto" margin-right="auto">
+</p>
+
+# Database View versus GraphQL View
+GraphQL treats the data like it's a graph. 
+
+<p align="center">
+<img src="images/graphql_database_versus_graphql.drawio.png" width="400" margin-left="auto" margin-right="auto">
+</p>

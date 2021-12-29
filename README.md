@@ -90,3 +90,7 @@ A correct input looks like:
 * `root query`: Entrypoint into the data/application
 * `resolve() function`: The function that actually makes the database calls; can be utilized `sync` OR `async` (by returning a `promise`). For the `sync` example see `graphql_practice_no_database`. For the `async` example see `graphql_practice_json_server`.
 * `lodash`: Helper function for working with collections of data
+* `json-server`: A tiny, extremely helpful JSON Server for dev environments
+* `json.db`: The data storage file for `json-server`, and what you will likely have to modify if you make changes to this mock backend
+* `fetch`: Native command used to make HTTP requets.
+* `Axios`: Tool for making HTTP requests. More useful than `fetch`, but it is a third-party library.

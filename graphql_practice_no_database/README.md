@@ -1,5 +1,6 @@
 # Table of Contents
 * [Summary](#summary)
+    * [Important Files](#important-files)
     * [Packages](#packages)
     * [Directory Structure](#directory-structure)
     * [How to Use](#how-to-use)

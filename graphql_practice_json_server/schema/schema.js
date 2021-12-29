@@ -6,7 +6,7 @@
 // From course page: https://www.udemy.com/course/graphql-with-react-course/learn/lecture/6523028#overview
 // Import GraphQL:
 const graphql = require('graphql');
-const _ = require ('lodash'); // Helper for collections of data
+const axios = require('axios');
 const {
     GraphQLObjectType,
     GraphQLString,
@@ -14,11 +14,16 @@ const {
     GraphQLSchema // Helper, takes in root query and returns GraphQL schema instance
 } = graphql;
 
-// WARNING: In place of an actual database, the following can be used for dev
-const users = [
-    { id: '23', firstName: 'Bill', age: 20 },
-    { id: '47', firstName: 'Samantha', age: 21}
-];
+// The order in which you define 'Types' in GraphQL can be significant, as is the case with CompanyType
+// Treat associations between Types as just another field, for example see the company field in UserType below
+const CompanyType = new GraphQLObjectType({
+    name: 'Company',
+    fields: {
+        id: { type: GraphQLString },
+        name: { type: GraphQLString },
+        description: { type: GraphQLString }
+    }
+});
 
 // This instructs GraphQL what properties UserType should have
 const UserType = new GraphQLObjectType({
@@ -26,7 +31,15 @@ const UserType = new GraphQLObjectType({
     fields: { // Every user will have an id, a firstName, and an age
         id: { type: GraphQLString},
         firstName: { type: GraphQLString},
-        age: { type: GraphQLInt}
+        age: { type: GraphQLInt},
+        company: { // Associate UserType and CompanyType
+            type: CompanyType,
+            resolve(parentValue, args) {
+
+                return axios.get(`http://localhost:3000/companies/${parentValue.companyId}`)
+                    .then(res => res.data); // .then: Axios addition to format the return type in a way GraphQL expects
+            }
+        }
     }
 });
 
@@ -42,8 +55,14 @@ const RootQuery = new GraphQLObjectType({
             // Resolve makes the actual database call to get the data
             resolve(parentValue,
                     args) {
-                // Replace this with your specific data implementation:
-                return _.find(users, { id: args.id });
+                // Connect GraphQL to the json-server; keep in mind that this is
+                // an ES6 template string, use backticks `` instead of quotes ''
+                // The id portion of args.id comes in when the query is made.
+                // Note that you will have to make sure your return value is something
+                // GraphQL expects; axios doesn't return the response in the necessary
+                // format, so we use resp => resp.data to change it. 
+                return axios.get(`http://localhost:3000/users/${args.id}`)
+                    .then(resp => resp.data);
             }
         }
     }
