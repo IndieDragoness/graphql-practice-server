@@ -10,6 +10,8 @@
 * [More about JSON Server](#more-about-json-server)
 * [The Resolve Function](#the-resolve-function)
 * [Database View versus GraphQL View](#database-view-versus-graphql-view)
+* [Bidirectional Relationships](#bidirectional-relationships)
+    * [Common Gotcha of this kind of Relationship](#common-gotchas-of-this-kind-of-relationship)
 
 # Summary
 This directory is for practicing GraphQL with a JSON Server (`json-server` package).
@@ -90,9 +92,11 @@ Run the following command:
 
 ### Running the Docker Container
 Start the container:
-* `docker run -p4000:4000 graphql_practice_json_server`
+* `docker run -p4000:4000 -p3000:3000 graphql_practice_json_server`
 
 Then go to `localhost:4000/graphql` in your browser.
+
+You can also visit the `json-server` at `localhost:3000`.
 
 # More About JSON Server
 An excellent tool for setting up Mock data/backend for when you need to do middle/frontend development.
@@ -112,3 +116,36 @@ GraphQL treats the data like it's a graph.
 <p align="center">
 <img src="images/graphql_database_versus_graphql.drawio.png" width="400" margin-left="auto" margin-right="auto">
 </p>
+
+# Bidirectional Reference
+Commonly, we'll want to be able to do something like be able to ask a `User` what their company is while also asking a `Company` who their (List) of `User`s are. This kind of bidirectional reference requires a `resolve()` function inside each type that points to the other. In the case of `User` it's straightforward; point to a single `Company` by id. However when asking a `Company`, we'll need to return a `GraphQLList` of users.
+
+## Common Gotcha of this kind of Relationship
+It's important to keep in mind that Bidirectional reference creates a Circular reference (`UserType` depends on `CompanyType`, but `CompanyType` also depends on `UserType`), which will often result in errors. For example if `CompanyType` is defined first, then:
+```
+ReferenceError: UserType is not defined.
+```
+
+To fix this, find the `fields` object and wrap it with an Arrow Function. The Arrow function allows us to define the entire file first before attempting to execute. In other words, this is a JavaScript closure scope issue (not a GraphQL issue).
+```
+fields: () => ({ ... })
+```
+
+For example:
+```
+const CompanyType = new GraphQLObjectType({
+    name: 'Company',
+    fields: () => ({ // This modification here: fields: () => ({ ... })
+        id: { type: GraphQLString },
+        name: { type: GraphQLString },
+        description: { type: GraphQLString },
+        users: {
+            type: new GraphQLList(UserType),
+            resolve(parentValue, args) {
+                return axios.get(`http://localhost:3000/companies/${parentValue.id}/users`)
+                    .then(res => res.data);
+            }
+        }
+    })
+});
+```
