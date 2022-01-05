@@ -14,7 +14,15 @@
     * [Common Gotcha of this kind of Relationship](#common-gotchas-of-this-kind-of-relationship)
 
 # Summary
-This directory is for practicing GraphQL with a JSON Server (`json-server` package).
+This directory is for practicing GraphQL with a JSON Server (`json-server` package). This is a backend-focused practice project.
+If you are just getting started with GraphQL, it's better to start with `graphql_practice_no_database` and learn `queries`.
+Once you are done with `queries`, you can then use this project to practice `mutations` (editing the backend using GraphQL) as well
+as some very basic backend verification with the `GraphQLNonNull()` wrapper.
+
+Some `json-server` specific notes are contained in this `README.md`, but many relevant (generalized) notes are contained in the 
+`README.md` at the top directory.
+
+For this project, `axios` is a promise-based HTTP client used to make all of our REST calls (`post`, `get`, `patch`, etc) and supports `node.js`.
 
 ## Important Files
 1. `json.db`: This is where your data should be stored/modified.
@@ -23,8 +31,8 @@ This directory is for practicing GraphQL with a JSON Server (`json-server` packa
 4. `package.json`: This is where you add additional helper commands, in this project's case the `json:server` component to start the `json-server`.
 
 ## Packages
-* `json-server`
-* `axios`
+* [`json-server`](https://github.com/typicode/json-server)
+* [`axios`](https://github.com/axios/axios)
 
 ## How to Use
 This implementation uses the `json-server` package to provide the `db.json` file, which will serve as a mock API The `json-server` package is about building very small, very fast fake API's to serve data.

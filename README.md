@@ -4,15 +4,19 @@
     * [Init](#init)
     * [Directory Structure](#directory-structure)
     * [How to Add to this Project](#how-to-use)
+    
 * [Common Errors](#common-errors)
+
 * [Query Syntax](#query-syntax)
     * [Naming Queries for the Frontend](#naming-queries-for-the-frontend)
     * [Using Keys to Differentiate Similar Queries](#using-keys-to-differentiate-similar-queries)
     * [Query Fragments for the Frontend](#query-fragments-for-the-frontend)
     * [Using Mutations to Modify the Backend](#using-mutations-to-modify-the-backend)
         * [Mutation Syntax](#mutation-syntax)
-* [Verification](#verification)
+
+* [Backend Verification](#backend-verification)
     * [Using GraphQLNonNull to Require Values](#using-graphqlnonnull-to-require-values)
+    
 * [Types of Requests](#types-of-requests)
     * [GET](#get)
         * [Axios GET](#axios-get)
@@ -24,6 +28,7 @@
         * [Axios DELETE](#axios-delete)
     * [PATCH](#patch)
         * [Axios PATCH](#axios-patch)
+        
 * [Glossary of Terms](#glossary-of-terms)
 
 # Summary
@@ -277,7 +282,7 @@ Response (`id` is required, even though the value returned was `null`). Keep in 
 }
 ```
 
-# Verification
+# Backend Verification
 ## Using GraphQLNonNull to Require Values
 `GraphQLNonNull()` is a Low level of validation for data via GraphQL and the backend. In other words, make a field required. For example, this means that the first name should be required `firstName: { type: new GraphQLNonNull(GraphQLString) }`. Only asserts that a value was passed in.
 
